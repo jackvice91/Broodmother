@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">var traits = [
+                ["Alpha", "2", "Instinct", "If no Atlas is assigned module damage this turn the Behemoth draws a card."],
+                ["Berserker", "1", "Instinct", "At the beginning of the round, discard the top card of the Behemoth deck. On an 8+ the Behemoth will deal damage to the Atlas crew and draw instead of advancing this round."],
+                ["Nightmarish", "0", "Instinct", "Brutal and cunning, this opponent is unpredictable at best. Draw 2 more cards in your opening hand."],
+                ["Predator", "1", "Instinct", "If neither pilot Assaults or Supports against this Behemoth both take a Stress."],
+                ["Relentless", "1+1/Category", "Instinct", "At the beginning of the round, discard the top card of the Behemoth deck. On a 5+Category of the Behemoth, it advances towards the city regardless of being Assaulted.(Cannot take with Stealthy)"],
+                ["Stalker", "1/Category", "Instinct", "At the end of a round where the Behemoth was crit, pick up all non face cards, shuffle them, and lay them face down. Flip them face up when those cards are Assaulted, or when the Behemoth deals damage."],
+                ["Alpha", "2", "Instinct", "If no Atlas is assigned module damage this turn, the Behemoth draws a card."],
+                ["Ambush", "1", "Inherent (Initial Hand)", "After drawing the Behemoth's initial hand, draw +1 card per unique pair in that hand."],
+                ["Armor Plating", "1", "General (Atlas Attack)", "No more than 2 cards can be removed in a single pilot Action (this includes Crits and Missiles)"],
+                ["Blade", "2", "General (Atlas Damage)", "Whenever any Atlas takes damage from this Behemoth, a pilot must first mark a Stress if able before any damage is assigned."],
+                ["Blinding", "1", "General (Atlas Attack)", "If a pilot Crits, pick a card from their hand at random and place it face up in front of them. They must use their card when taking an Assault or Support action next."],
+                ["Brain Shrieking", "2", "General (Atlas Attack)", "When a pilot crits, they must discard 1 card if able."],
+                ["Breath Weapon (May buy up to 3 Times)", "1", "General (Atlas Attack)", "When the Behemoth is crit, place one card face down beside it per Breath Weapon Trait. At the end of the round when dealing Damage, treat these cards as Behemoth cards. Discard them after damage is dealt."],
+                ["Burning Aura", "2", "General (Atlas Damage)", "Before assigning damage, the pilots of all Atlases in the same zone as this Behemoth, mark a Stress if able."],
+                ["Diamond Shell", "3", "General (Atlas Attack)", "Cards played against this Behemoth count as if they were 1 value lower."],
+                ["Displacement", "1", "General (Atlas Attack)", "The first Ranged Assault each round against this Behemoth is ignored."],
+                ["Extra Head/Limbs", "2", "General (Atlas Damage)", "If you damage a module, damage all modules in the corresponding area (Legs, Torso, Head)"],
+                ["Feedback", "2", "General (Atlas Attack)", "On a crit Desynch: 3"],
+                ["Flight", "2", "General (Atlas Attack)", "When you Crit against the Behemoth it redraws its lowest non-face card."],
+                ["Frenzy", "2", "Inherent (Behemoth Draw)", "If you draw an Ace or two, draw an extra card.(Cannot take with Huge Size)"],
+                ["Huge Size", "3", "Inherent (Behemoth Draw, Initial Hand)", "When drawing an Ace or a Two discard it and draw again.(Cannot take with Frenzy)"],
+                ["King of Monsters", "1", "General (Atlas Damage)", "Kings on this Behemoth count as value 13."],
+                ["Pulse", "2", "General (Atlas Attack)", "The first time this behemoth is Crit all Atlases in melee are deactivated and can take no action until a pilot takes a Recovery action."],
+                ["Queen of Monsters", "1", "General (Atlas Damage)", "Queens on this behemoth count as value 12."],
+                ["Rampaging", "1", "Inherent", "If this Behemoth reaches the ‘Within’ zone, mark a check box on every Campaign Location in play. If any are discarded, each pilot should tell us one person they knew at that location they will never see again."],
+                ["Ranged Attack", "1", "General (Atlas Damage)", "Before assigning damage, the pilots of all Atlases in any Zone other than the one occupied by this Behemoth, mark a Stress if able"],
+                ["Regeneration", "3", "Inherent (Behemoth Draw)", "If the Behemoth did 4+ damage this turn to a single Atlas, it draws an extra card."],
+                ["Spikes", "2", "General (Atlas Attack)", "When a pilot crits this behemoth they take 1 Stress."],
+                ["Stealthy", "2", "Inherent", "Start the Behemoth 1 Zone closer to the City (ex: Near) (Cannot take with Relentless Instinct)"],
+                ["Terrifying", "1", "Inherent (Atlas Damage)", "Whenever this behemoth does 4+ damage to your Atlas, shift all Style points to Defensive."],
+                ["Toxic Blood", "1", "General (Atlas Attack)", "When using Melee Weapons against this Behemoth damage 1 module of the Melee Weapon used. This damage cannot be prevented."],
+                ["Shapeshifting", "3", "Inherent (Behemoth Draw)", "Before drawing cards for this behemoth, discard the Behemoth cards and draw a number equal to the number discarded. "],
+                ["Supplies", "1", "General (Behemoth Draw)", "Draw 1 card when advancing closer to the city."],
+                ["Tail Whip", "2", "General (Atlas Damage)", "When an Atlas takes damage from this Behemoth, at least 1 card cannot be ignored via Stress."],
+                ["Talons", "1", "General (Atlas Damage)", "When Atlas takes 4+ damage from this behemoth: Desynch: 2."],
+                ["Teeth", "2", "General (Atlas Damage)", "When damaging Atlas modules, damage all modules of that type on the Atlas."],
+                ["Killing Blow", "0", "Win", "After reducing the Behemoth to 0 cards, any Atlas (starting with the team that reduced the monster) may play a 7+ to finish the Behemoth. If they do not, combat continues and it draws cards as normal at the end of the round."],
+                ["Playing Dead", "1", "Win", "After a killing blow, before the beginning of the next turn, flip a card. On a 10+ the Behemoth comes back. Draw number of cards equal to remaining Atlases and continue combat."],
+                ["Retribution", "2", "Win", "After a killing blow, flip over the Behemoth’s Category in cards. The Atlases must take this as damage immediately."]
+            ];
+            var vs1 = [[1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+                [1, 1, 0, 0, 0],
+                [0, 1, 1, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 2, 0, 0],
+                [1, 2, 0, 0, 0],
+                [0, 0, 0, 0, 1]
+            ];
+            var vs2 = [[0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+                [1, 0, 1, 0, 0],
+                [0, 1, 1, 0, 0],
+                [0, 1, 1, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 2, 0, 0],
+                [1, 2, 0, 0, 0],
+                [0, 0, 0, 0, 1]
+            ];
+            var vs3 = [[1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+                [1, 1, 0, 0, 0],
+                [0, 1, 1, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 2, 0, 0],
+                [1, 2, 0, 0, 0],
+                [0, 0, 0, 0, 1]
+            ];
+
+            var points_for_cat = [3, 5, 7, 9, 11];
+
+            var relflag;
+            var relentless;
+            var stalker;
+            var breath;
+            var winflag;
+            var haswin = false;
+        </script>
+    </head>
+    <body>
+        Engagement: <input type="number" name="engagement" id="txtWeight" max="10" min="1" value="1"/>
+        Atlases: <input type="number" name="atlases" id="txtWeight" max="3" min="1" value="1"/>
+        <button onclick="call_the_neighborhood(document.getElementsByName('engagement')[0].value, document.getElementsByName('atlases')[0].value);">generate!</button>
+        <br>
+        or
+        <br>
+        Build points: <input type="number" name="bp" id="txtWeight" max="20" min="1" value="1"/>
+        Category: <input type="number" name="cat" id="txtWeight" max="5" min="1" value="1" />
+        <button onclick="make_behemoth(create_list(document.getElementsByName('cat')[0].value), [], document.getElementsByName('bp')[0].value);">generate!</button>
+        <button onclick="cancel_the_apocalypse();">clear</button>
+        <div id="text">Let there be kaijus!</div>
+
+
+        <script>
+            stats.innerHTML = "";
+            ;
+            function StringSet() {
+                var setObj = {}, val = {};
+
+                this.add = function (str) {
+                    setObj[str] = val;
+                };
+
+                this.contains = function (str) {
+                    return setObj[str] === val;
+                };
+
+                this.remove = function (str) {
+                    delete setObj[str];
+                };
+
+                this.values = function () {
+                    var values = [];
+                    for (var i in setObj) {
+                        if (setObj[i] === val) {
+                            values.push(i);
+                        }
+                    }
+                    return values;
+                };
+            }
+
+
+            function gen_campaign(atls, eng) {
+                var stats = document.getElementById("text");
+
+                var res;
+                if (atls === 1) {
+                    res = vs1[eng - 1];
+                } else if (atls === 2) {
+                    res = vs2[eng - 1];
+                } else if (atls === 3) {
+                    res = vs3[eng - 1];
+                }
+
+            }
+            function gen_free() {
+                var stats = document.getElementById("text");
+                stats.innerHTML = "";
+            }
+
+            function findTargetSumSubsets(input, target, ramp, index, allSubsets) {
+
+                if (index > (input.length - 1)) {
+                    if (getSum(ramp) === target) {
+                        allSubsets.add(ramp);
+                    }
+                    return;
+                }
+
+                findTargetSumSubsets(input, target, ramp + input[index] + " ", index + 1, allSubsets);
+                findTargetSumSubsets(input, target, ramp, index + 1, allSubsets);
+
+            }
+
+            function perms(list, max) {
+
+                var allSubsets = new StringSet();
+
+                findTargetSumSubsets(list, max, "", 0, allSubsets);
+
+                //var stats = document.getElementById("text");
+                //stats.innerHTML = allSubsets[0];
+                logger.log(allSubsets);
+
+            }
+
+            function getSum(intString) {
+                //window.alert(intString.trim());
+                var sum = 0;
+                var sTokens = intString.trim().split(" ");
+                for (var i = 0; i < sTokens.length; i++) {
+                    sum += parseInt(sTokens[i]);
+                }
+                return sum;
+            }
+            function rand(min, max)
+            {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+
+            function create_list(cat) {
+
+                relflag = rand(0, 1);
+                relentless = 1 + (1 * cat);
+                stalker = 1 * cat;
+                breath = rand(1, 3);
+                winflag = rand(36, 38);
+
+                var list = new Array();
+
+                for (i = 0; i < traits.length; i++) {
+
+                    if (i < 36 && (!(i === 4 || i === 5))) {
+
+                        list.push([1, parseInt(traits[i][1])]);
+
+
+                    } else {
+
+                        list.push([0, parseInt(traits[i][1])]);
+
+                    }
+                }
+
+                list[4][1] = relentless;
+                list[5][1] = stalker;
+                list[12][1] = breath;
+
+                if (relflag === 0) {
+
+                    list[4][0] = 1;
+
+                } else {
+                    list[28][0] = 1;
+                }
+
+                list[winflag][0] = 1;
+
+                // document.getElementById("text").innerHTML = list;
+
+                return list;
+
+
+            }
+
+            function make_behemoth(list, reslist, tot) {
+                //alert("making a behemoth with " +tot+"points");
+                var rand_tr = rand(0, list.length - 1);
+
+                //alert("total: " + tot + " reslist: " + reslist + " value to sub: " + list[rand_tr][1] + " win: " + haswin);
+
+                if (tot - list[rand_tr][1] >= 0 && list[rand_tr][0] === 1) {
+
+                    tot = tot - list[rand_tr][1];
+
+                    reslist.push(rand_tr);
+
+                    if (traits[rand_tr][2] === "Win") {
+                        //alert("it's a win trait!");
+                        list[36][0] = 0;
+                        list[37][0] = 0;
+                        list[38][0] = 0;
+
+                        haswin = true;
+
+
+                    } else {
+
+                        list[rand_tr][0] = 0;
+
+                    }
+
+                    make_behemoth(list, reslist, tot);
+
+                } else if (tot === 0) {
+
+                    if (haswin === false) {
+
+                        reslist.push(36);
+
+
+                    }
+
+                    document.getElementById("text").innerHTML = display_behemoth(reslist, document.getElementById("text").innerHTML);
+
+                    return reslist;
+
+                } else {
+
+                    make_behemoth(list, reslist, tot);
+                }
+
+            }
+            
+            function getmax(list) {
+
+                var tmp = 0;
+
+                for (var i = 0; i < list.length; i++) {
+
+                    if (list[i][1] > tmp && list[i][0] === 1) {
+
+                        tmp = list[i][1];
+
+                    }
+
+                }
+
+                return tmp;
+
+            }
+
+            function display_behemoth(list, text) {
+
+                text = text.concat("<table><tr><th>name</th><th>cost</th><th>type</th><th>description</th></tr>");
+
+                for (var i = 0; i < list.length; i++) {
+                    text = text.concat("<tr>");
+
+                       
+                    for (var j = 0; j < 4; j++) {
+                        
+                        if (list[i] === 12 && j === 0){
+                           
+                        text = text.concat("<td>" + breath + "x " + traits[list[i]][j] + "</td>");
+
+                    } else {
+                     
+                    text = text.concat("<td>" + traits[list[i]][j] + "</td>");
+                }
+
+                    }
+                    text = text.concat("</tr>");
+
+                }
+
+                text = text.concat("</table>");
+
+                return text;
+            }
+            
+            function cat_x_encounter(cat){
+                
+                var res = [];
+                
+                for (var i = 0; i<cat.length;i++){
+                    
+                    res.push(cat[i]*points_for_cat[i]);
+                    
+                }
+                
+                return res;
+                
+            }
+            
+            function behemoth_x_enc(list){
+                
+                for (var i = 0;i<list.length;i++){
+                    if(list[i]!== 0){
+                        
+                    make_behemoth(create_list(i),[],list[i]);
+              
+            }
+        }
+    }
+
+function call_the_neighborhood(eng, atl){
+   
+   
+   
+    switch(atl) {
+        
+        /*foreach element of the array
+         * makebehemoth n times, where n is the number in the array. Take the right buildpoints as category
+         * */
+        case "1": behemoth_x_enc(cat_x_encounter(vs1[eng-1])); break;
+        case "2": behemoth_x_enc(cat_x_encounter(vs2[eng-1])); break;
+        case "3": behemoth_x_enc(cat_x_encounter(vs3[eng-1]));break;
+        default: break;
+    }
+    
+    
+}
+
+function cancel_the_apocalypse(){
+    
+    document.getElementById("text").innerHTML = "";
+    
+}
+
+        </script>
+    </body>
+</html>
