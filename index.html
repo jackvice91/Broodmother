@@ -241,8 +241,14 @@ and open the template in the editor.
 
             function make_behemoth(list, reslist, tot) {
                 //alert("making a behemoth with " +tot+"points");
+                if (reslist.length === 0) {
+                    
+                    var rand_tr = rand(0, 6);
+                    
+                }
+                else {
                 var rand_tr = rand(0, list.length - 1);
-
+                }
                 //alert("total: " + tot + " reslist: " + reslist + " value to sub: " + list[rand_tr][1] + " win: " + haswin);
 
                 if (tot - list[rand_tr][1] >= 0 && list[rand_tr][0] === 1) {
